@@ -2,34 +2,44 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import Tarefa from '../../models/Tarefa';
 import * as enums from '../../utils/enums/Tarefa';
 
+type TarefasState = {
+  items: Tarefa[];
+};
+
+const initialState: TarefasState = {
+  items: [
+    {
+      id: 1,
+      titulo: 'Estudar JavaScript',
+      prioridade: enums.Prioridade.NORMAL,
+      status: enums.Status.PENDENTE,
+      descricao: 'Estudando objetos e funções em JavaScript'
+    },
+    {
+      id: 2,
+      titulo: 'Estudar React',
+      prioridade: enums.Prioridade.IMPORTANTE,
+      status: enums.Status.CONCLUIDA,
+      descricao: 'Estudando hooks em React'
+    },
+    {
+      id: 3,
+      titulo: 'Estudar TypeScript',
+      prioridade: enums.Prioridade.URGENTE,
+      status: enums.Status.PENDENTE,
+      descricao: 'Estudando interfaces em TypeScript'
+    }
+  ]
+};
+
 const tarefasSlice = createSlice({
   name: 'tarefas',
-  initialState: [
-    new Tarefa(
-      'Estudar JavaScript',
-      enums.Prioridade.IMPORTANTE,
-      enums.Status.PENDENTE,
-      'Estudar JavaScript na EBAC',
-      1
-    ),
-    new Tarefa(
-      'Estudar Ingles',
-      enums.Prioridade.URGENTE,
-      enums.Status.CONCLUIDA,
-      'Estudar Ingles vendo video',
-      2
-    ),
-    new Tarefa(
-      'Ir para academia',
-      enums.Prioridade.NORMAL,
-      enums.Status.PENDENTE,
-      'Fazer esteira e treinar perna',
-      3
-    )
-  ],
+  initialState,
   reducers: {
     remover: (state, action: PayloadAction<number>) => {
-      return state.filter((tarefa) => tarefa.id !== action.payload);
+      state.items = state.items.filter(
+        (tarefa) => tarefa.id !== action.payload
+      );
     }
   }
 });
