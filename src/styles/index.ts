@@ -1,4 +1,6 @@
 import styled, { createGlobalStyle } from 'styled-components';
+import variaveis from './variaveis';
+import { Botao } from '../components/Tarefa/styles';
 
 const EstiloGlobal = createGlobalStyle`
   * {
@@ -39,4 +41,7 @@ export const Campo = styled.input`
   width: 100%;
 `;
 
+export const BotaoSalvar = styled(Botao)`
+  background-color: ${variaveis.verde};
+`;
 export default EstiloGlobal;

@@ -50,9 +50,23 @@ const tarefasSlice = createSlice({
         state.itens[indexDaTarefa] = action.payload;
       }
       // tarefaParaEditar = action.payload;
+    },
+    cadastrar: (state, action: PayloadAction<Tarefa>) => {
+      const tarefaJaExiste = state.itens.find(
+        (tarefa) =>
+          tarefa.titulo.toLowerCase() === action.payload.titulo.toLowerCase()
+      );
+
+      const tarefaVazia = action.payload.titulo.trim() === '';
+
+      if (tarefaJaExiste || tarefaVazia) {
+        alert('Já existe uma tarefa com esse título ou a tarefa está vazia');
+      } else {
+        state.itens.push(action.payload);
+      }
     }
   }
 });
 
-export const { remover, editar } = tarefasSlice.actions;
+export const { remover, editar, cadastrar } = tarefasSlice.actions;
 export default tarefasSlice.reducer;
