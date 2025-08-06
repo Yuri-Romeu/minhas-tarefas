@@ -58,6 +58,7 @@ const Tarefa = ({
         {status}
       </S.Tag>
       <S.Descricao
+        editando={estaEditando}
         disabled={!estaEditando}
         value={descricao}
         onChange={(e) => setDescricao(e.target.value)}

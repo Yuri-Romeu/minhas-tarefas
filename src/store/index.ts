@@ -10,5 +10,10 @@ const store = configureStore({
   }
 });
 
+store.subscribe(() => {
+  const estado = store.getState();
+  localStorage.setItem('tarefas', JSON.stringify(estado.tarefas.itens));
+});
+
 export type RootReducer = ReturnType<typeof store.getState>;
 export default store;

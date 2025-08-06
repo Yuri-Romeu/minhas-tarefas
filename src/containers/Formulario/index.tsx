@@ -1,5 +1,11 @@
 import { Form, Opcoes, Opcao } from './styles';
-import { BotaoSalvar, Campo, MainContainer, Titulo } from '../../styles';
+import {
+  BotaoMob,
+  BotaoSalvar,
+  Campo,
+  MainContainer,
+  Titulo
+} from '../../styles';
 import { FormEvent, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { cadastrar } from '../../store/reducers/tarefas';
@@ -62,7 +68,15 @@ const Formulario = () => {
             </Opcao>
           ))}
         </Opcoes>
-        <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>
+        <BotaoSalvar type="submit">Cadastrar</BotaoSalvar>{' '}
+        <BotaoMob
+          type="button"
+          onClick={() => {
+            navigate('/');
+          }}
+        >
+          Voltar para tarefas
+        </BotaoMob>
       </Form>
     </MainContainer>
   );

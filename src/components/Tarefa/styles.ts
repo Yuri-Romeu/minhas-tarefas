@@ -54,8 +54,8 @@ export const Tag = styled.span<TagProps>`
   display: inline-block;
 `;
 
-export const Descricao = styled.textarea`
-  color: #8b8b8b;
+export const Descricao = styled.textarea<{ editando: boolean }>`
+  color: ${(props) => (props.editando ? '#000' : '#8b8b8b')};
   font-size: 14px;
   line-height: 24px;
   font-family: 'Roboto Mono', sans-serif;
@@ -64,7 +64,9 @@ export const Descricao = styled.textarea`
   margin-bottom: 16px;
   margin-top: 16px;
   resize: none;
-  border: none;
+  border: ${(props) => (props.editando ? '2px solid #000' : 'none')};
+  border-radius: ${(props) => (props.editando ? '5px' : '0')};
+  padding: ${(props) => (props.editando ? '3px' : '0')};
   background-color: transparent;
 `;
 

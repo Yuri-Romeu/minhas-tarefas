@@ -54,6 +54,9 @@ const ListaDeTarefas = () => {
   return (
     <MainContainer>
       <Titulo as="p">{mensagem}</Titulo>
+      {tarefas.length === 0 && (
+        <Titulo as="h2">Nenhuma tarefa encontrada</Titulo>
+      )}
       <ul>
         {tarefas.map((t) => (
           <li key={t.titulo}>
